@@ -38,6 +38,9 @@ Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
 ```sh
 Comentários de linha: (//)
 ```
+```sh
+Comentários de bloco: (/* ... */)
+```
 
 ## Estruturas de Controle:
 
