@@ -12,10 +12,10 @@ read nome;
 write "Digite a sua idade:";
 read idade;
 
-write "Ola, ";
+print "Ola, ";
 write nome;
-write "Voce tem ";
-write idade;
+print "Voce tem ";
+print idade;
 write " anos.";
 
 // 2. Operações Aritméticas 
