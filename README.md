@@ -8,61 +8,65 @@ O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise 
 ## Tipos de Dados:
 
 ```sh
-npm int: Números inteiros
+int: Números inteiros
 ```
 ```sh
-npm float: Números de ponto flutuante (são sempre formatados com duas casas decimais em operações aritméticas)
+float: Números de ponto flutuante
+(são sempre formatados com duas casas decimais em operações aritméticas)
 ```
 ```sh
-npm string: Texto, que é tratado como um vetor de caracteres, permitindo acesso a caracteres individuais
+string: Texto, que é tratado como um vetor de caracteres,
+permitindo acesso a caracteres individuais
 ```
 ```sh
-npm vector<tipo>: Vetores de int, float ou string
+vector<tipo>: Vetores de int, float ou string
 ```
 
 ## Operações:
 
 ```sh
-npm Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^)
+Aritméticas: Adição (+), Subtração (-), Multiplicação (*),
+Divisão (/) e Potência (^)
 ```
 ```sh
-npm Lógicas: E (&&), Ou (||).
+Lógicas: E (&&), Ou (||).
 ```
 ```sh
-npm Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
+Relacionais: Igual a (==), Diferente de (!=), Menor que (<),
+Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
 ```
 ```sh
-npm Comentários de linha: (//)
+Comentários de linha: (//)
 ```
 
 ## Estruturas de Controle:
 
 ```sh
-npm Condicional: if (...) { ... } else { ... }
+Condicional: if (...) { ... } else { ... }
 ```
 ```sh
-npm Repetição: while (...) { ... }
+Repetição: while (...) { ... }
 ```
 
 ## Entrada e Saída:
 
 ```sh
-npm read <variável>;: Lê um valor do teclado e armazena-o na variável.
+read <variável>;: Lê um valor do teclado e armazena-o na variável.
 ```
 ```sh
-npm write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela.
+write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela.
 ```
 
 ## Manipular vetores e strings:
 
 ```sh
-npm Acesso a Elementos: minha_variavel[i]
+Acesso a Elementos: minha_variavel[i]
 ```
 ```sh
-npm Tamanho: minha_variavel.size()
+Tamanho: minha_variavel.size()
 ```
 ```sh
-npm Manipulação: minha_variavel.push(...) e minha_variavel.pop()
+Manipulação: minha_variavel.push(...) e minha_variavel.pop()
 ```
 
 
