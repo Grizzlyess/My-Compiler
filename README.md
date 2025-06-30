@@ -11,12 +11,10 @@ O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise 
 int: Números inteiros
 ```
 ```sh
-float: Números de ponto flutuante
-(são sempre formatados com duas casas decimais em operações aritméticas)
+float: Números de ponto flutuante (são sempre formatados com duas casas decimais em operações aritméticas)
 ```
 ```sh
-string: Texto, que é tratado como um vetor de caracteres,
-permitindo acesso a caracteres individuais
+string: Texto, que é tratado como um vetor de caracteres, permitindo acesso a caracteres individuais
 ```
 ```sh
 vector<tipo>: Vetores de int, float ou string
@@ -25,21 +23,16 @@ vector<tipo>: Vetores de int, float ou string
 ## Operações:
 
 ```sh
-Aritméticas: Adição (+), Subtração (-), Multiplicação (*),
-Divisão (/) e Potência (^)
+Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^)
 ```
 ```sh
 Lógicas: E (&&), Ou (||).
 ```
 ```sh
-Relacionais: Igual a (==), Diferente de (!=), Menor que (<),
-Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
+Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
 ```
 ```sh
 Comentários de linha: (//)
-```
-```sh
-Comentários de bloco: (/* ... */)
 ```
 
 ## Estruturas de Controle:
@@ -70,6 +63,16 @@ Tamanho: minha_variavel.size()
 ```
 ```sh
 Manipulação: minha_variavel.push(...) e minha_variavel.pop()
+
 ```
+## Questões Testadas:
+
+```sh
+We're Competing : https://codeforces.com/gym/105962/problem/B
+```
+```sh
+Uno : https://codeforces.com/group/kZPk3ZTzR5/contest/100979/attachments/download/4289/maratona-mineira-2015-en.pdf
+```
+
 
 
