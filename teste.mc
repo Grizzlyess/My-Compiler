@@ -70,5 +70,5 @@ while (c != "#") {
     }
 }
 
-write "Fim de jogo! Obrigado por jogar.";
+
 
