@@ -1,7 +1,7 @@
 # MC ++
 >A seguir está o passo a passo para conseguir utilizar a liguagem MC++. Este projeto foi apresentado a disciplina de Compiladores, ministrada pelo professor Diego Rocha, como requisito parcial para obtenção de nota. A linguagem está completa, feita a construção da linguagem léxica, sintática e semântica.
 
-O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise léxica e Bison para a análise sintática. O código-fonte  é analisado, traduzido para uma Árvore de Sintaxe Abstrata (AST).
+O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise léxica e Bison para a análise sintática. O código-fonte  é analisado, traduzido para uma Árvore de Sintaxe Abstrata (AST) e é baseado em C++.
 
 ![](logo.png)
 
