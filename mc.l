@@ -18,7 +18,6 @@ string_const  \"([^\\\"]|\\.)*\"
 %%
 
 "/*"          { BEGIN(BLOCK_COMMENT); }
-
 "//".* {}
 
 <BLOCK_COMMENT>{
@@ -38,6 +37,8 @@ string_const  \"([^\\\"]|\\.)*\"
     "while"       { return WHILE; }
     "read"        { return READ; }
     "write"       { return WRITE; }
+    "print"       { return PRINT; }
+    "<3"          { return NEWLINE_HEART; } /* NOVO */
     "push"        { return PUSH; }
     "pop"         { return POP; }
     "size"        { return SIZE; }
@@ -51,6 +52,7 @@ string_const  \"([^\\\"]|\\.)*\"
     "<"           { return LT; }
     ">"           { return GT; }
     "="           { return ASSIGN; }
+    "!"           { return NOT; }
 
     {float_const} { yylval.float_val = atof(yytext); return FLOAT_CONST; }
     {int_const}   { yylval.int_val = atoi(yytext); return INT_CONST; }
@@ -75,13 +77,10 @@ string_const  \"([^\\\"]|\\.)*\"
     "*"           { return '*'; }
     "/"           { return '/'; }
     "^"           { return POW; }
-    "!"           { return NOT; }
 
     [ \t\r\n]+    {}
-
     .             { printf("Caractere nao reconhecido: %s\n", yytext); return '?'; }
 }
-
 
 %%
 

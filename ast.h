@@ -426,41 +426,80 @@ public:
 class ASTWrite : public ASTNode
 {
     ASTExpr *expr;
-
 public:
     ASTWrite(ASTExpr *e) : expr(e) {}
     ~ASTWrite() { delete expr; }
     void execute() override
     {
         ASTVariable *var_node = dynamic_cast<ASTVariable *>(expr);
-        if (var_node)
-        {
+        if (var_node) {
             string var_name = var_node->getName();
-            if (variable_types.count(var_name))
-            {
-                string type = variable_types[var_name];
-                if (type == "string")
-                {
-                    cout << var_node->evaluate() << endl; // evaluate() já reconstrói a string
-                    return;
-                }
-                else if (type.rfind("vector", 0) == 0)
-                {
-                    cout << "[";
-                    const auto &vec = vector_variables[var_name];
-                    for (size_t i = 0; i < vec.size(); ++i)
-                    {
-                        cout << vec[i];
-                        if (i < vec.size() - 1)
-                            cout << ", ";
-                    }
-                    cout << "]" << endl;
-                    return;
-                }
+            if (variable_types.count(var_name)) {
+                 string type = variable_types[var_name];
+                 if (type == "string") {
+                     cout << var_node->evaluate() << endl;
+                     return;
+                 } else if (type.rfind("vector", 0) == 0) {
+                     cout << "[";
+                     const auto &vec = vector_variables[var_name];
+                     for (size_t i = 0; i < vec.size(); ++i) {
+                         cout << vec[i];
+                         if (i < vec.size() - 1)
+                             cout << ", ";
+                     }
+                     cout << "]" << endl;
+                     return;
+                 }
             }
         }
-
+        
         cout << expr->evaluate() << endl;
+    }
+};
+
+class ASTPrint : public ASTNode
+{
+    ASTExpr *expr;
+public:
+    ASTPrint(ASTExpr *e) : expr(e) {}
+    ~ASTPrint() { delete expr; }
+    void execute() override
+    {
+        // A lógica é idêntica à de ASTWrite, mas usa 'cout' sem 'endl'.
+        ASTVariable *var_node = dynamic_cast<ASTVariable *>(expr);
+        if (var_node) {
+            string var_name = var_node->getName();
+            if (variable_types.count(var_name)) {
+                 string type = variable_types[var_name];
+                 if (type == "string") {
+                     cout << var_node->evaluate(); // SEM endl
+                     return;
+                 } else if (type.rfind("vector", 0) == 0) {
+                     cout << "[";
+                     const auto &vec = vector_variables[var_name];
+                     for (size_t i = 0; i < vec.size(); ++i) {
+                         cout << vec[i];
+                         if (i < vec.size() - 1)
+                             cout << ", ";
+                     }
+                     cout << "]"; // SEM endl
+                     return;
+                 }
+            }
+        }
+        
+        cout << expr->evaluate(); // SEM endl
+    }
+};
+
+
+class ASTPrintln : public ASTNode
+{
+public:
+    ASTPrintln() {}
+    void execute() override
+    {
+        cout << endl;
     }
 };
 

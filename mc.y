@@ -34,7 +34,7 @@ void yyerror(const char* s) { cerr << "Erro de sintaxe: " << s << endl; }
 %left '*' '/'
 %right POW
 %right NOT
-%right UMINUS  
+%right UMINUS
 %left '.'
 
 // Tokens
@@ -43,8 +43,10 @@ void yyerror(const char* s) { cerr << "Erro de sintaxe: " << s << endl; }
 %token <str_val> STRING_CONST
 %token <id> ID
 %token VECTOR PUSH POP SIZE POW NOT
+%token PRINT NEWLINE_HEART 
 
 %token INT FLOAT STRING IF ELSE WHILE READ WRITE AND OR EQ NEQ LEQ LE GE LT GT ASSIGN
+
 
 %type <expr> expr
 %type <node> program stmt stmt_list
@@ -83,6 +85,8 @@ stmt:
     }
   | ID ASSIGN expr ';' { $$ = new ASTAssignment(*$1, $3); delete $1; }
   | WRITE expr ';' { $$ = new ASTWrite($2); }
+  | PRINT expr ';' { $$ = new ASTPrint($2); }
+  | NEWLINE_HEART ';' { $$ = new ASTPrintln(); } 
   | READ ID ';' { $$ = new ASTRead(*$2); delete $2; }
   | IF '(' expr ')' stmt %prec LOWER_THAN_ELSE { $$ = new ASTIf($3, $5, nullptr); }
   | IF '(' expr ')' stmt ELSE stmt { $$ = new ASTIf($3, $5, $7); }

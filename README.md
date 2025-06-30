@@ -1,7 +1,7 @@
 # MC ++
 >A seguir está o passo a passo para conseguir utilizar a liguagem MC++. Este projeto foi apresentado a disciplina de Compiladores, ministrada pelo professor Diego Rocha, como requisito parcial para obtenção de nota. A linguagem está completa, feita a construção da linguagem léxica, sintática e semântica.
 
-O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise léxica e Bison para a análise sintática. O código-fonte  é analisado, traduzido para uma Árvore de Sintaxe Abstrata (AST) e é baseado em C++.
+O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise léxica e Bison para a análise sintática. O código-fonte  é analisado, traduzido para uma Árvore de Sintaxe Abstrata (AST).
 
 ![](logo.png)
 
@@ -50,7 +50,13 @@ Repetição: while (...) { ... }
 read <variável>;: Lê um valor do teclado e armazena-o na variável.
 ```
 ```sh
-write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela.
+write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela COM /n no final.
+```
+```sh
+write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela SEM /n no final.
+```
+```sh
+'<3;': Adiciona um /n.
 ```
 
 ## Manipular vetores e strings:
