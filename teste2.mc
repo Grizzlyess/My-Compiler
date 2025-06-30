@@ -41,29 +41,29 @@ if (finished == 0) {
         } else {
             write "NAO";
         }
-        finished = 1; // Marca que o programa já encontrou a resposta.
+        finished = 1; 
     }
 }
 
 
 if (finished == 0) {
-    int l;      // Ponteiro esquerdo da janela
-    int r;      // Ponteiro direito da janela
-    int menor;  // Menor número de erros encontrado
+    int l;      
+    int r;      
+    int menor;  
     l = 0;
     r = 13;
-    menor = 15; // Inicia com um valor alto
+    menor = 15; 
 
     // Loop da janela deslizante
     while (r < tam) {
-        int j;      // Índice para a palavra 'word'
-        int erros;  // Erros na janela atual
-        int i;      // Índice para a string 's'
+        int j;      
+        int erros;  
+        int i;      
         j = 0;
         erros = 0;
         i = l;
 
-        // Compara a substring na janela com a palavra 'word'
+        
         while (i <= r) {
             if (s[i] != word[j]) {
                 erros = erros + 1;
@@ -72,7 +72,6 @@ if (finished == 0) {
             i = i + 1;
         }
 
-        // Atualiza o menor número de erros encontrado
         if (erros < menor) {
             menor = erros;
         }
