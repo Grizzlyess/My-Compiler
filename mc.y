@@ -24,32 +24,32 @@ void yyerror(const char* s) { cerr << "Erro de sintaxe: " << s << endl; }
 }
 
 
-// Precedência
 %nonassoc LOWER_THAN_ELSE
 %nonassoc ELSE
 %left OR
 %left AND
 %left EQ NEQ
-%left LT GT LEQ GE // Modificado de LE para LEQ para consistência com o mc.l
+%left LT GT LEQ GE
 %left '+' '-'
 %left '*' '/'
+%right POW      
 %right UMINUS
+%left '.'
 
 // Tokens
 %token <int_val> INT_CONST
 %token <float_val> FLOAT_CONST
 %token <str_val> STRING_CONST
 %token <id> ID
-%token VECTOR
+%token VECTOR PUSH POP SIZE
+%token POW      
 
 %token INT FLOAT STRING IF ELSE WHILE READ WRITE AND OR EQ NEQ LEQ LE GE LT GT ASSIGN
 
-// Definições de tipo para não-terminais
 %type <expr> expr
 %type <node> program stmt stmt_list
-%type <id> type                          
-%type <expr_list_ptr> expr_list     
-    
+%type <id> type
+%type <expr_list_ptr> expr_list
 
 %%
 
@@ -59,7 +59,7 @@ program:
 
 stmt_list:
     stmt stmt_list { $$ = new ASTSequence($1, $2); }
-    | /* vazio */ { $$ = nullptr; }
+    |  { $$ = nullptr; }
 ;
 
 stmt:
@@ -67,7 +67,8 @@ stmt:
   | FLOAT ID ';' { $$ = new ASTDeclaration("float", *$2); delete $2; }
   | STRING ID ';' { $$ = new ASTDeclaration("string", *$2); delete $2; }
   | VECTOR LT type GT ID ';' {
-        $$ = new ASTVectorDeclaration(*$3, *$5);
+        std::string full_type = "vector<" + *$3 + ">";
+        $$ = new ASTVectorDeclaration(full_type, *$5);
         delete $3; delete $5;
     }
   | VECTOR LT type GT ID ASSIGN expr ';' {
@@ -76,7 +77,8 @@ stmt:
             yyerror("declaracao de vetor so pode ser inicializada com uma lista [...]");
             YYABORT;
         }
-        $$ = new ASTVectorDeclaration(*$3, *$5, init);
+        std::string full_type = "vector<" + *$3 + ">";
+        $$ = new ASTVectorDeclaration(full_type, *$5, init);
         delete $3; delete $5;
     }
   | ID ASSIGN expr ';' { $$ = new ASTAssignment(*$1, $3); delete $1; }
@@ -86,16 +88,16 @@ stmt:
   | IF '(' expr ')' stmt ELSE stmt { $$ = new ASTIf($3, $5, $7); }
   | WHILE '(' expr ')' stmt { $$ = new ASTWhile($3, $5); }
   | '{' stmt_list '}' { $$ = $2; }
+  | ID '.' PUSH '(' expr ')' ';' { $$ = new ASTVectorPush(*$1, $5); delete $1; }
+  | ID '.' POP '(' ')' ';' { $$ = new ASTVectorPop(*$1); delete $1; }
 ;
 
-// Regra para capturar o nome de um tipo (usado em 'vector<tipo>')
 type:
     INT { $$ = new std::string("int"); }
   | FLOAT { $$ = new std::string("float"); }
   | STRING { $$ = new std::string("string"); }
 ;
 
-// Regras para construir uma lista de expressões dentro de [...]
 expr_list:
     expr {
         $$ = new std::vector<ASTExpr*>();
@@ -115,15 +117,17 @@ expr:
   | '[' expr_list ']' { $$ = new ASTVectorInit($2); }
   | '[' ']'           { $$ = new ASTVectorInit(nullptr); }
   | ID '[' expr ']'   { $$ = new ASTVectorAccess(*$1, $3); delete $1; }
+  | ID '.' SIZE '(' ')' { $$ = new ASTVectorSize(*$1); delete $1; }
   | expr '+' expr { $$ = new ASTBinary("+", $1, $3); }
   | expr '-' expr { $$ = new ASTBinary("-", $1, $3); }
   | expr '*' expr { $$ = new ASTBinary("*", $1, $3); }
   | expr '/' expr { $$ = new ASTBinary("/", $1, $3); }
+  | expr POW expr { $$ = new ASTBinary("^", $1, $3); } 
   | expr EQ expr { $$ = new ASTBinary("==", $1, $3); }
   | expr NEQ expr { $$ = new ASTBinary("!=", $1, $3); }
   | expr LT expr { $$ = new ASTBinary("<", $1, $3); }
   | expr GT expr { $$ = new ASTBinary(">", $1, $3); }
-  | expr LEQ expr { $$ = new ASTBinary("<=", $1, $3); } // Corrigido de LE para LEQ
+  | expr LEQ expr { $$ = new ASTBinary("<=", $1, $3); }
   | expr GE expr { $$ = new ASTBinary(">=", $1, $3); }
   | expr AND expr { $$ = new ASTBinary("&&", $1, $3); }
   | expr OR expr { $$ = new ASTBinary("||", $1, $3); }

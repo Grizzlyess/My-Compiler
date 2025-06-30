@@ -1,12 +1,15 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include "ast.h"
 
-extern FILE* yyin;     
+extern FILE* yyin;
 extern int yyparse();
 extern ASTNode* root;
 
+
 std::map<std::string, std::string> variables;
 std::map<std::string, std::vector<std::string>> vector_variables;
+std::map<std::string, std::string> variable_types;
+
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -20,7 +23,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    yyin = file;  // Direciona Flex para ler do arquivo
+    yyin = file; 
 
     if (yyparse() == 0 && root != nullptr) {
         root->execute();
