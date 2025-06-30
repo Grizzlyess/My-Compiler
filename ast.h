@@ -257,31 +257,36 @@ public:
     }
 };
 
+
 class ASTUnary : public ASTExpr
 {
     std::string op;
     ASTExpr *expr;
-
 public:
     ASTUnary(const std::string &o, ASTExpr *e) : op(o), expr(e) {}
     ~ASTUnary() { delete expr; }
     string evaluate() override
     {
         string val = expr->evaluate();
-        if (op == "-")
-        {
-            if (val.find('.') != string::npos)
-            {
+        
+        if (op == "!") {
+            // Negação Lógica
+            bool is_false = (stof(val) == 0.0f);
+            return is_false ? "1" : "0";
+        }
+        
+        if (op == "-") {
+            bool is_float = val.find('.') != string::npos;
+            if (is_float) {
                 ostringstream out;
                 out << fixed << setprecision(2) << -stof(val);
                 return out.str();
-            }
-            else
-            {
-                return to_string(-stoi(val));
+            } else {
+                return to_string(-stoll(val));
             }
         }
-        return val;
+
+        return val; 
     }
 };
 

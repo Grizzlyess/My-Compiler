@@ -23,7 +23,7 @@ void yyerror(const char* s) { cerr << "Erro de sintaxe: " << s << endl; }
     std::vector<ASTExpr*>* expr_list_ptr;
 }
 
-
+// Precedência de operadores
 %nonassoc LOWER_THAN_ELSE
 %nonassoc ELSE
 %left OR
@@ -32,8 +32,9 @@ void yyerror(const char* s) { cerr << "Erro de sintaxe: " << s << endl; }
 %left LT GT LEQ GE
 %left '+' '-'
 %left '*' '/'
-%right POW      
-%right UMINUS
+%right POW
+%right NOT
+%right UMINUS  
 %left '.'
 
 // Tokens
@@ -41,8 +42,7 @@ void yyerror(const char* s) { cerr << "Erro de sintaxe: " << s << endl; }
 %token <float_val> FLOAT_CONST
 %token <str_val> STRING_CONST
 %token <id> ID
-%token VECTOR PUSH POP SIZE
-%token POW      
+%token VECTOR PUSH POP SIZE POW NOT
 
 %token INT FLOAT STRING IF ELSE WHILE READ WRITE AND OR EQ NEQ LEQ LE GE LT GT ASSIGN
 
@@ -122,7 +122,7 @@ expr:
   | expr '-' expr { $$ = new ASTBinary("-", $1, $3); }
   | expr '*' expr { $$ = new ASTBinary("*", $1, $3); }
   | expr '/' expr { $$ = new ASTBinary("/", $1, $3); }
-  | expr POW expr { $$ = new ASTBinary("^", $1, $3); } 
+  | expr POW expr { $$ = new ASTBinary("^", $1, $3); }
   | expr EQ expr { $$ = new ASTBinary("==", $1, $3); }
   | expr NEQ expr { $$ = new ASTBinary("!=", $1, $3); }
   | expr LT expr { $$ = new ASTBinary("<", $1, $3); }
@@ -131,8 +131,10 @@ expr:
   | expr GE expr { $$ = new ASTBinary(">=", $1, $3); }
   | expr AND expr { $$ = new ASTBinary("&&", $1, $3); }
   | expr OR expr { $$ = new ASTBinary("||", $1, $3); }
+  | NOT expr { $$ = new ASTUnary("!", $2); }
   | '-' expr %prec UMINUS { $$ = new ASTUnary("-", $2); }
   | '(' expr ')' { $$ = $2; }
 ;
+
 
 %%
