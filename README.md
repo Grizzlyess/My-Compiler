@@ -1,87 +1,68 @@
-Compilador para a Linguagem MC
-1. Descrição do Projeto
-Este projeto consiste num interpretador para uma linguagem de programação simples, designada "MC" (com a extensão de ficheiro .mc). O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise léxica e Bison para a análise sintática.
+# MC ++
+>A seguir está o passo a passo para conseguir utilizar a liguagem MC++. Este projeto foi apresentado a disciplina de Compiladores, ministrada pelo professor Diego Rocha, como requisito parcial para obtenção de nota. A linguagem está completa, feita a construção da linguagem léxica, sintática e semântica.
 
-O código-fonte na linguagem MC é analisado, traduzido para uma Árvore de Sintaxe Abstrata (AST) em memória, e depois executado diretamente.
+O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise léxica e Bison para a análise sintática. O código-fonte  é analisado, traduzido para uma Árvore de Sintaxe Abstrata (AST).
 
-2. Funcionalidades da Linguagem
-A linguagem MC suporta um conjunto robusto de funcionalidades, tornando-a capaz de resolver problemas de programação complexos.
+![](logo.png)
 
-Tipos de Dados:
-int: Números inteiros.
+## Tipos de Dados:
 
-float: Números de ponto flutuante (são sempre formatados com duas casas decimais em operações aritméticas).
+```sh
+npm int: Números inteiros
+```
+```sh
+npm float: Números de ponto flutuante (são sempre formatados com duas casas decimais em operações aritméticas)
+```
+```sh
+npm string: Texto, que é tratado como um vetor de caracteres, permitindo acesso a caracteres individuais
+```
+```sh
+npm vector<tipo>: Vetores de int, float ou string
+```
 
-string: Texto, que é tratado como um vetor de caracteres, permitindo acesso a caracteres individuais.
+## Operações:
 
-vector<tipo>: Vetores de int, float ou string.
+```sh
+npm Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^)
+```
+```sh
+npm Lógicas: E (&&), Ou (||).
+```
+```sh
+npm Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
+```
+```sh
+npm Comentários de linha: (//)
+```
 
-Operações:
-Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^).
+## Estruturas de Controle:
 
-Lógicas: E (&&), Ou (||).
+```sh
+npm Condicional: if (...) { ... } else { ... }
+```
+```sh
+npm Repetição: while (...) { ... }
+```
 
-Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
+## Entrada e Saída:
 
-Estruturas de Controlo:
-Condicional: if (...) { ... } else { ... }
+```sh
+npm read <variável>;: Lê um valor do teclado e armazena-o na variável.
+```
+```sh
+npm write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela.
+```
 
-Repetição: while (...) { ... }
+## Manipular vetores e strings:
 
-Entrada e Saída:
-read <variável>;: Lê um valor do teclado e armazena-o na variável.
+```sh
+npm Acesso a Elementos: minha_variavel[i]
+```
+```sh
+npm Tamanho: minha_variavel.size()
+```
+```sh
+npm Manipulação: minha_variavel.push(...) e minha_variavel.pop()
+```
 
-write <expressão>;: Escreve o valor de uma expressão, variável ou texto no ecrã.
 
-Manipulação de Vetores e Strings:
-Como as strings são tratadas como vetores, as seguintes operações funcionam para ambos:
-
-Acesso a Elementos: minha_variavel[indice]
-
-Tamanho: minha_variavel.size()
-
-Manipulação: minha_variavel.push(...) e minha_variavel.pop()
-
-Comentários:
-Comentários de linha única são suportados com //.
-
-3. Como Compilar e Executar
-O projeto inclui um Makefile que automatiza todo o processo de compilação.
-
-Pré-requisitos:
-g++ (compilador C++)
-
-flex
-
-bison
-
-Passos:
-Compilar o Interpretador:
-Abra um terminal na pasta do projeto e execute o comando:
-
-make
-
-Isto irá gerar um ficheiro executável chamado mc.
-
-Executar um Programa:
-Para executar um ficheiro de código escrito na linguagem MC (ex: problema.mc), use o seguinte comando:
-
-./mc nome_do_ficheiro.mc
-
-Limpar Ficheiros Gerados:
-Para apagar o executável e todos os ficheiros intermédios gerados pelo processo de compilação, execute:
-
-make clean
-
-4. Estrutura dos Ficheiros
-main.cpp: O ponto de entrada do programa. Orquestra o processo de análise e execução.
-
-parser.y: Contém a gramática da linguagem MC para o Bison. É responsável pela análise sintática e pela construção da AST.
-
-mc.l: Contém as regras de reconhecimento de tokens para o Flex. É responsável pela análise léxica.
-
-ast.h: Define todas as classes que compõem a Árvore de Sintaxe Abstrata (AST). É o coração da estrutura de dados do interpretador.
-
-Makefile: Automatiza a compilação do projeto.
-
-Ficheiros .mc: Ficheiros de exemplo com código escrito na linguagem MC para testar as funcionalidades do interpretador.
