@@ -53,7 +53,7 @@ read <variável>;: Lê um valor do teclado e armazena-o na variável.
 write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela COM /n no final.
 ```
 ```sh
-write <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela SEM /n no final.
+print <expressão>;: Escreve o valor de uma expressão, variável ou texto na tela SEM /n no final.
 ```
 ```sh
 '<3;': Adiciona um /n.
