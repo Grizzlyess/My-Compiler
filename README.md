@@ -34,6 +34,9 @@ Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<
 ```sh
 Comentários de linha: (//)
 ```
+```sh
+Comentários de bloco: (/*...*/)
+```
 
 ## Estruturas de Controle:
 
