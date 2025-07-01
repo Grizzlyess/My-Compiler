@@ -17,7 +17,7 @@ write nome;
 print "Voce tem ";
 print idade;
 write " anos.";
-
+<3;
 // 2. Operações Aritméticas 
 
 
@@ -37,7 +37,7 @@ int negativo;
 negativo = 10;
 write negativo;
 write -negativo;
-
+<3;
 
 // 3. Controle e Lógica
 
@@ -46,12 +46,12 @@ if (idade >= 18 && saldo > 100.00) {
 } else {
     write "Voce ou e menor de idade ou o seu saldo nao e superior a 100.00.";
 }
-
+<3;
 // Testando o operador NOT (!)
 if (!(idade < 18)) {
     write "(Usando NOT) Confirmado: Voce nao e menor de idade.";
 }
-
+<3;
 // 4. Vetores e Loops
 
 compras.push("arroz");
@@ -79,19 +79,19 @@ while (i < compras.size()) {
 // 5. Strings como Vetores 
 
 
-write "O seu nome, ";
-write nome;
-write ", tem ";
-write nome.size();
+print "O seu nome, ";
+print nome;
+print ", tem ";
+print nome.size();
 write " caracteres.";
 
-write "O primeiro caractere do seu nome e: ";
+print "O primeiro caractere do seu nome e: ";
 write nome[0];
-
+<3;
 write "Seu nome soletrado ao contrario:";
 i = nome.size() - 1;
 while (i >= 0) {
-    write nome[i];
+    print nome[i];
     i = i - 1;
 }
 
