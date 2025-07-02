@@ -5,7 +5,7 @@ O interpretador foi desenvolvido utilizando as ferramentas Flex para a análise 
 
 ![](logo.png)
 
-## Tipos de Dados:
+## Tipos de Dados e Atribuir Valores:
 
 ```sh
 int: Números inteiros
@@ -20,22 +20,17 @@ string: Texto, que é tratado como um vetor de caracteres, permitindo acesso a c
 vector<tipo>: Vetores de int, float ou string
 ```
 
-## Operações:
+EXEMPLO:
+```sh
+int idade;
+float saldo;
+string nome;
+vector<string> compras;
 
-```sh
-Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^)
-```
-```sh
-Lógicas: E (&&), Ou (||).
-```
-```sh
-Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
-```
-```sh
-Comentários de linha: (//)
-```
-```sh
-Comentários de bloco: (/*...*/)
+idade = 21;
+saldo = 57.5;
+string = "Maria";
+compras = ["leite", "ovos", "pao"];
 ```
 
 ## Estruturas de Controle:
@@ -45,6 +40,92 @@ Condicional: if (...) { ... } else { ... }
 ```
 ```sh
 Repetição: while (...) { ... }
+```
+
+## Operações:
+
+```sh
+Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^)
+```
+```sh
+Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
+```
+```sh
+Lógicas: E (&&), Ou (||), NOT (!).
+```
+```sh
+Comentários de linha: (//)
+```
+```sh
+Comentários de bloco: (/*...*/)
+```
+
+EXEMPLO:
+```sh
+int i;
+int a;
+a=1;
+i=10;
+while (i >= 0) {
+    a = a * 2;
+    i = i - 1;
+}
+```
+```sh
+int a;
+int b;
+int resultado;
+a = 5;
+b = 2;
+resultado = (a * 10) + (b ^ 3);
+if (resultado > 50) {
+    print "   -> Verdadeiro, o resultado e maior que 50.";
+} else {
+    print "   -> Falso.";
+}
+```
+```sh
+int a;
+int b;
+a = 1; 
+b = 0;
+
+if (a && b) 
+{
+    write "Verdadeiro";
+} 
+else 
+{
+    write "Falso"; // Saída esperada
+}
+
+if (a || b) 
+{
+    write "Verdadeiro"; // Saída esperada
+} 
+else 
+{
+    write "Falso";
+}
+
+if (!b) 
+{
+    write "Verdadeiro"; // Saída esperada
+} else 
+{
+    write "Falso";
+}
+
+//comentário de linha
+/*comentario de bloco*/
+```
+```sh
+//Colocar o (-) na frente do número, inverte seu valor.
+write "Testando o inverter o sinal: 10 para -10";
+int negativo;
+negativo = 10;
+write negativo; //10
+write -negativo; //-10
 ```
 
 ## Entrada e Saída:
@@ -61,6 +142,16 @@ print <expressão>;: Escreve o valor de uma expressão, variável ou texto na te
 ```sh
 '<3;': Adiciona um /n.
 ```
+EXEMPLO:
+```sh
+int idade;
+write "Digite a sua idade:";
+read idade;
+print "Voce tem ";
+print idade;
+write " anos.";
+<3;
+```
 
 ## Manipular vetores e strings:
 
@@ -72,7 +163,20 @@ Tamanho: minha_variavel.size()
 ```
 ```sh
 Manipulação: minha_variavel.push(...) e minha_variavel.pop()
-
+```
+EXEMPLO:
+```sh
+vector<string> compras;
+compras.push("arroz");
+compras.push("feijao");
+compras.push("batata");
+print "Sua lista de compras inicial: ";
+write compras;
+print "Tamanho da lista:";
+write compras.size();
+compras.pop();
+print "Sua lista de compras nova: ";
+write compras;
 ```
 ## Questões Testadas:
 
