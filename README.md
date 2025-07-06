@@ -179,12 +179,13 @@ print "Sua lista de compras nova: ";
 write compras;
 ```
 ## Questões Testadas:
-
+We're Competing :
 ```sh
-We're Competing : https://codeforces.com/gym/105962/problem/B
+https://codeforces.com/gym/105962/problem/B
 ```
+Uno :
 ```sh
-Uno : https://codeforces.com/group/kZPk3ZTzR5/contest/100979/attachments/download/4289/maratona-mineira-2015-en.pdf
+https://codeforces.com/group/kZPk3ZTzR5/contest/100979/attachments/download/4289/maratona-mineira-2015-en.pdf
 ```
 
 
