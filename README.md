@@ -188,6 +188,7 @@ Uno :
 ```sh
 https://codeforces.com/group/kZPk3ZTzR5/contest/100979/attachments/download/4289/maratona-mineira-2015-en.pdf
 ```
+![](aviso.png)
 
 
 
