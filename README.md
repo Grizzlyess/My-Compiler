@@ -48,7 +48,8 @@ Repetição: while (...) { ... }
 Aritméticas: Adição (+), Subtração (-), Multiplicação (*), Divisão (/) e Potência (^)
 ```
 ```sh
-Relacionais: Igual a (==), Diferente de (!=), Menor que (<), Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
+Relacionais: Igual a (==), Diferente de (!=), Menor que (<),
+Menor ou igual a (<=), Maior que (>), Maior ou igual a (>=).
 ```
 ```sh
 Lógicas: E (&&), Ou (||), NOT (!).
