@@ -188,6 +188,22 @@ Uno :
 ```sh
 https://codeforces.com/group/kZPk3ZTzR5/contest/100979/attachments/download/4289/maratona-mineira-2015-en.pdf
 ```
+
+## Como compilar:
+Apagar os anteriores:
+```sh
+rm -f mc.tab.* lex.yy.c
+```
+```sh
+bison -d mc.y
+```
+```sh
+flex mc.l
+```
+```sh
+g++ -no-pie -std=c++11 -o mc main.cpp mc.tab.c lex.yy.c -Wall
+```
+
 ![](aviso.png)
 
 
