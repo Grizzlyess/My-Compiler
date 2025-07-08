@@ -203,6 +203,10 @@ flex mc.l
 ```sh
 g++ -no-pie -std=c++11 -o mc main.cpp mc.tab.c lex.yy.c -Wall
 ```
+```sh
+./mc nome-do-arquivo.mc
+```
+
 
 ![](aviso.png)
 
